@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jateen Kumar Barik - Resume</title>
+    <title>Resume</title>
 
     <style>
         body {
@@ -13,7 +13,7 @@
         }
 
         .top-bar {
-            background: #000;
+            background: black;
             padding: 15px;
             display: flex;
             justify-content: center;
@@ -23,11 +23,11 @@
         .btn {
             background: #00c853;
             color: white;
-            padding: 12px 22px;
+            padding: 14px 24px;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         iframe {
@@ -35,25 +35,38 @@
             height: 95vh;
             border: none;
         }
+
+        /* Mobile message */
+        .mobile-msg {
+            display: none;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            iframe {
+                display: none;
+            }
+            .mobile-msg {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<!-- 🔥 MOBILE AUTO-REDIRECT -->
-<script>
-if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    window.location.href = "resume.pdf";
-}
-</script>
-
-<!-- 🔝 TOP BUTTONS -->
 <div class="top-bar">
     <a class="btn" href="resume.pdf" target="_blank">📄 View Resume</a>
     <a class="btn" href="resume.pdf" download>⬇ Download Resume</a>
 </div>
 
-<!-- 📄 PDF VIEWER (Desktop) -->
+<!-- Mobile UI -->
+<div class="mobile-msg">
+    <h2>Resume Preview</h2>
+    <p>Click below to view or download</p>
+</div>
+
+<!-- Desktop PDF viewer -->
 <iframe src="resume.pdf"></iframe>
 
 </body>
