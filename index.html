@@ -32,7 +32,6 @@
             display: inline-block;
         }
 
-        /* Different color for download */
         .download-btn {
             background: #2962ff;
         }
@@ -84,28 +83,44 @@
 
 <!-- 🔝 Buttons -->
 <div class="top-bar">
-    <a class="btn view-btn" href="resume.pdf" target="_blank">📄 OPEN RESUME</a>
-    <button class="btn download-btn" onclick="downloadPDF()">⬇ DOWNLOAD RESUME</button>
+    <a class="btn view-btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">
+        📄 VIEW IN NEW TAB
+    </a>
+
+    <button class="btn download-btn" onclick="downloadPDF()">
+        ⬇ DOWNLOAD RESUME
+    </button>
 </div>
 
 <!-- 📱 Mobile Message -->
 <div class="mobile-msg">
-    <h2>Resume Preview</h2>
-    <p>Tap above to view or download</p>
+    <h2>Resume</h2>
+    <p>Use the buttons above to view or download</p>
 </div>
 
 <!-- 💻 Desktop PDF Viewer -->
 <iframe src="resume.pdf"></iframe>
 
-<!-- 🔧 Force download script -->
+<!-- 🔥 Strong download logic -->
 <script>
 function downloadPDF() {
-    const link = document.createElement('a');
-    link.href = 'resume.pdf';
-    link.download = 'Jateen_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const url = "resume.pdf";
+
+    fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+            const blobURL = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = "Jateen_Resume.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        })
+        .catch(() => {
+            // fallback
+            window.open(url, "_blank");
+        });
 }
 </script>
 
