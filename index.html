@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Resume</title>
+    <title>Jateen Kumar Barik - Resume</title>
 
     <style>
         body {
@@ -21,29 +21,21 @@
             flex-wrap: wrap;
         }
 
-.btn {
-    background: #00c853;
-    color: white;
-    padding: 18px 32px;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 20px;
-    display: inline-block;
-    width: auto;
-}
+        .btn {
+            background: #00c853;
+            color: white;
+            padding: 18px 32px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            display: inline-block;
+        }
 
-/* 🚀 Mobile Boost */
-@media (max-width: 768px) {
-    .btn {
-        font-size: 24px;      /* bigger text */
-        padding: 20px;        /* bigger button */
-        width: 90%;           /* full-width feel */
-        margin: 12px auto;
-        display: block;
-        border-radius: 12px;
-    }
-}
+        /* Different color for download */
+        .download-btn {
+            background: #2962ff;
+        }
 
         iframe {
             width: 100%;
@@ -56,7 +48,14 @@
             padding: 20px;
         }
 
+        /* Hide VIEW button on desktop */
+        .view-btn {
+            display: none;
+        }
+
+        /* 📱 Mobile Optimization */
         @media (max-width: 768px) {
+
             iframe {
                 display: none;
             }
@@ -66,10 +65,15 @@
             }
 
             .btn {
-                font-size: 22px;
-                padding: 18px 30px;
-                width: 85%;
-                margin: 10px auto;
+                font-size: 24px;
+                padding: 20px;
+                width: 90%;
+                margin: 12px auto;
+                display: block;
+            }
+
+            /* Show VIEW button only on mobile */
+            .view-btn {
                 display: block;
             }
         }
@@ -78,17 +82,22 @@
 
 <body>
 
+<!-- 🔝 Buttons -->
 <div class="top-bar">
-        <button class="btn" onclick="downloadPDF()">⬇ Download Resume</button>
+    <a class="btn view-btn" href="resume.pdf" target="_blank">📄 OPEN RESUME</a>
+    <button class="btn download-btn" onclick="downloadPDF()">⬇ DOWNLOAD RESUME</button>
 </div>
 
+<!-- 📱 Mobile Message -->
 <div class="mobile-msg">
     <h2>Resume Preview</h2>
     <p>Tap above to view or download</p>
 </div>
 
+<!-- 💻 Desktop PDF Viewer -->
 <iframe src="resume.pdf"></iframe>
 
+<!-- 🔧 Force download script -->
 <script>
 function downloadPDF() {
     const link = document.createElement('a');
